@@ -1,52 +1,32 @@
-const app = require("express")();
-const server = require("http").createServer(app);
-const cors = require("cors");
-
+const server = require("http").createServer();
 const io = require("socket.io")(server, {
   cors: {
     origin: "*",
-    methods: ["GET", "POST"],
   },
 });
 
-app.use(cors());
-
-const PORT = process.env.PORT || 5000;
-
-app.get("/", (req, res) => {
-  res.send("Running");
-});
+const PORT = 4000;
+const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
 
 io.on("connection", (socket) => {
-  socket.emit("me", socket.id);
+  console.log(`Client ${socket.id} connected`);
 
-  socket.on("callUser", ({ userToCall, signalData, from, name }) => {
-    io.to(userToCall).emit("callUser", {
-      signal: signalData,
-      from,
-      name,
-    });
+  // Join a conversation
+  const { roomId } = socket.handshake.query;
+  socket.join(roomId);
+
+  // Listen for new messages
+  socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
+    io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
   });
 
-  socket.on("updateMyMedia", ({ type, currentMediaStatus }) => {
-    console.log("updateMyMedia");
-    socket.broadcast.emit("updateUserMedia", { type, currentMediaStatus });
-  });
-
-  socket.on("msgUser", ({ name, to, msg, sender }) => {
-    io.to(to).emit("msgRcv", { name, msg, sender });
-  });
-
-  socket.on("answerCall", (data) => {
-    socket.broadcast.emit("updateUserMedia", {
-      type: data.type,
-      currentMediaStatus: data.myMediaStatus,
-    });
-    io.to(data.to).emit("callAccepted", data);
-  });
-  socket.on("endCall", ({ id }) => {
-    io.to(id).emit("endCall");
+  // Leave the room if the user closes the socket
+  socket.on("disconnect", () => {
+    console.log(`Client ${socket.id} diconnected`);
+    socket.leave(roomId);
   });
 });
 
-server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+server.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});

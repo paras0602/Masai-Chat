@@ -1,22 +1,19 @@
-import React , {useEffect} from "react";
-import "./App.css";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./Home";
-import "antd/dist/antd.css";
-import "font-awesome/css/font-awesome.min.css";
-import Footer from "./components/Footer/Footer";
-const App = () => {
-  
-  return (
 
+import "./index.css";
+import Home from "./Home/Home";
+import ChatRoom from "./ChatRoom/ChatRoom";
+
+function App() {
+  return (
     <Router>
       <Switch>
-        <Route path="/" component={Home} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/:roomId" component={ChatRoom} />
       </Switch>
-      <Footer />
     </Router>
-
   );
-};
+}
 
 export default App;
