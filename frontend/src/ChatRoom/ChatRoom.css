@@ -31,24 +31,29 @@
 }
 
 .statusDiv{
-    background-color: rgb(222, 194, 159);
-    width: 30%;
+    background-color: rgb(231, 223, 223);
+    width: 40%;
     text-align: center;
     margin: auto;
     border-radius: 10px;
+    padding: 1px;
 }
 
 .messages-container {
     flex: 1;
     min-height: 100px;
     overflow: auto;
-    border: 2px solid black; 
+    border: 2px solid rgb(250, 250, 250); 
     border-color: #9a9a9a;
     border-radius: 4px;   
     scrollbar-color: rgb(20, 19, 19);
-    width: 60%;
+    width: 55%;
     margin: auto;
     margin-bottom: 20px !important;
+    background: url('https://ictframe.com/wp-content/uploads/Wallpapers-on-WhatsApp.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    
 }
 
 .messages-list {
@@ -65,7 +70,7 @@
     resize: none;
     border-color: #9a9a9a;
     border-radius: 12px;
-    width: 59%;
+    width: 50%;
     /* margin: auto; */
 }
 
@@ -82,8 +87,9 @@
 .whatsapp{
     display: flex;
     gap: 10px;
-    width: 70%;
-  margin-left: 24rem;
+    width: 100%;
+    justify-content: center;
+  
 }
 
 .my-message {
@@ -98,17 +104,17 @@
 }
 
 .send-message-button {
-    font-size: 20px;
-    font-weight: 400;
+   height: 50px;
+    width: 50px;
     color: white;
-    background: rgb(0, 132, 255);
-    /* padding: 24px 12px; */
-    border: none;
-    border-radius: 30px;
+    background: rgb(115, 240, 156);
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
     border-color: #9a9a9a;
-    border-radius: 24px;
-    width: 4%;
-    height: 62%;
+   
+   
+   
     /* margin: auto; */
     /* margin-top: 20px; */
 }
@@ -117,3 +123,6 @@
     border-color: #9a9a9a;
     border-radius: 24px;
 } */
+.send-message-button:hover {
+    background: rgb(12, 218, 87);
+}
