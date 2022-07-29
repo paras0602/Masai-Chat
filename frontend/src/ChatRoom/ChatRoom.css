@@ -11,14 +11,44 @@
 
 .room-name {
     margin-top: 0;
+    color: rgb(0, 132, 255);
+}
+
+.status{
+    text-align: center;
+    font-weight: 400;
+    color: #403e3e;
+    margin-bottom: 0;
+    font-size: small;
+}
+
+.status1{
+    text-align: center;
+    font-weight: 400;
+    color: #403e3e;
+    font-size: small;
+
+}
+
+.statusDiv{
+    background-color: rgb(222, 194, 159);
+    width: 30%;
+    text-align: center;
+    margin: auto;
+    border-radius: 10px;
 }
 
 .messages-container {
     flex: 1;
     min-height: 100px;
     overflow: auto;
-    border: 1px solid black;
-    border-radius: 7px 7px 0 0;
+    border: 2px solid black; 
+    border-color: #9a9a9a;
+    border-radius: 4px;   
+    scrollbar-color: rgb(20, 19, 19);
+    width: 60%;
+    margin: auto;
+    margin-bottom: 20px !important;
 }
 
 .messages-list {
@@ -27,41 +57,63 @@
 }
 
 .new-message-input-field {
-    height: 200px;
-    max-height: 50%;
+    /* height: 200px; */
+    max-height: 40%;
     font-size: 20px;
-    padding: 8px 12px;
+    font-weight: 400;
+    padding: 8px 8px;
     resize: none;
+    border-color: #9a9a9a;
+    border-radius: 12px;
+    width: 59%;
+    /* margin: auto; */
 }
 
 .message-item {
-    width: 55%;
+    width: 45%;
     margin: 8px;
-    padding: 12px 8px;
+    padding: 10px 12px;
     word-break: break-word;
-    border-radius: 4px;
-    color: white;
+    border-radius: 24px;
+    color: black;
+    font-weight: 600;
+}
+
+.whatsapp{
+    display: flex;
+    gap: 10px;
+    width: 70%;
+  margin-left: 24rem;
 }
 
 .my-message {
     background-color: rgb(0, 132, 255);
     margin-left: auto;
+    padding-left: 10px;
 }
 
 .received-message {
-    background-color: #3f4042;
+    background-color: white;
     margin-right: auto;
 }
 
 .send-message-button {
-    font-size: 28px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 400;
     color: white;
-    background: #31a24c;
-    padding: 24px 12px;
+    background: rgb(0, 132, 255);
+    /* padding: 24px 12px; */
     border: none;
+    border-radius: 30px;
+    border-color: #9a9a9a;
+    border-radius: 24px;
+    width: 4%;
+    height: 62%;
+    /* margin: auto; */
+    /* margin-top: 20px; */
 }
 
-.messages-container, .new-message-input-field, .send-message-button {
+/* .messages-container, .new-message-input-field, .send-message-button {
     border-color: #9a9a9a;
-}
+    border-radius: 24px;
+} */
