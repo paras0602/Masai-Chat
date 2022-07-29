@@ -27,7 +27,8 @@ const ChatRoom = (props) => {
 
   return (
     <div className="chat-room-container">
-      <h1 className="room-name">Room-Id - {roomId}</h1>
+      <h1 className="room-name">Room-Id - {roomId}<span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You are having a Live Conversation !!</span></h1>
+
       <div className="messages-container">
         <div className="statusDiv">
           <h3 className="status">This is the beginning of your conversation.</h3>
@@ -45,15 +46,18 @@ const ChatRoom = (props) => {
           ))}
         </ol>
       </div>
-      <textarea
-        value={newMessage}
-        onChange={handleNewMessageChange}
-        placeholder="Write message..."
-        className="new-message-input-field"
-      />
-      <button onClick={handleSendMessage} className="send-message-button">
-        Send Message
-      </button>
+      <div className="whatsapp">
+        <textarea
+          value={newMessage}
+          onChange={handleNewMessageChange}
+          placeholder="Write message..."
+          className="new-message-input-field"
+        />
+        <button onClick={handleSendMessage} className="send-message-button">
+          +
+        </button>
+      </div>
+
     </div>
   );
 };
