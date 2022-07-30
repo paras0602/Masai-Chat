@@ -1,12 +1,21 @@
-const server = require("http").createServer();
+const express = require('express');
+const app = express();
+const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
   cors: {
     origin: "*",
   },
 });
 
-const PORT = 4000;
+
+
+const PORT = process.env.PORT ||4000;
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
+
+
+app.get("/", (req, res) => {
+  res.send("Running");
+});
 
 io.on("connection", (socket) => {
   console.log(`Client ${socket.id} connected`);
@@ -27,10 +36,13 @@ io.on("connection", (socket) => {
   });
 });
 
+
+// app.listen(PORT, () => {
+//   console.log(`Listening on port ${PORT}`)
+// })
+
 server.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
-
-
 
 
